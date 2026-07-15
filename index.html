@@ -288,6 +288,30 @@
   .lang-btn{background:none;border:none;padding:7px 11px;font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--grey);cursor:pointer;font-family:var(--sans);}
   .lang-btn.active{background:var(--rose-deep);color:#fff;}
   .lang-btn:not(.active):hover{background:var(--rose-mist);}
+
+  .individual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;}
+  .mini-card{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;}
+  .mini-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+  .mini-card-body{padding:18px 20px;flex-grow:1;display:flex;flex-direction:column;}
+  .mini-card-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px;}
+  .mini-card-top .name{font-family:var(--serif);font-size:18px;line-height:1.25;}
+  .mini-card-top .dur{display:block;font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+  .mini-card-top .price{font-family:var(--serif);font-style:italic;font-size:19px;white-space:nowrap;}
+  .mini-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+  .gallery-btn{background:none;border:1px solid var(--rose-deep);color:var(--rose-deep);font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:20px;cursor:pointer;font-family:var(--sans);}
+  .gallery-btn:hover{background:var(--rose-deep);color:#fff;}
+
+  .gallery-modal{position:fixed;inset:0;background:rgba(28,26,20,0.85);z-index:500;display:none;align-items:center;justify-content:center;padding:24px;}
+  .gallery-modal.open{display:flex;}
+  .gallery-modal-inner{background:#fff;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;border-radius:6px;padding:28px;position:relative;}
+  .gallery-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;line-height:1;cursor:pointer;color:var(--grey);}
+  .gallery-modal-inner h3{font-size:22px;margin-bottom:16px;padding-right:30px;}
+  .gallery-tabs{display:flex;gap:10px;margin-bottom:18px;}
+  .gallery-tab{background:none;border:1px solid var(--line);padding:8px 16px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:20px;cursor:pointer;color:var(--grey);font-family:var(--sans);}
+  .gallery-tab.active{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff;}
+  .gallery-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+  .gallery-media-grid img,.gallery-media-grid video{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;background:#000;}
+  .gallery-empty{color:var(--grey);font-size:14px;text-align:center;padding:30px 10px;}
 </style>
 </head>
 <body>
@@ -542,85 +566,193 @@
       </div>
 
       <p class="extras-title" data-i18n="extras_title">Tratamientos individuales</p>
-      <div class="extras-list">
-        <div class="extras-row">
-          <div class="extras-row-top"><span class="name" data-i18n="ex1_name">Limpieza facial profunda <span class="dur">1 h</span></span><span class="price">75 €</span></div>
-          <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Limpieza%20facial%20profunda%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener">Reservar</a>
-          <details>
-            <summary>Leer más</summary>
-            <div class="details-body">
-              <h5>Sobre este servicio</h5>
-              <p>Un tratamiento clásico y esencial para devolver a tu piel su pureza y equilibrio. A través de un protocolo completo de higiene, extracción y nutrición conseguimos oxigenar la piel, mejorar su textura y darle un aspecto fresco y saludable.</p>
-              <ul>
-                <li><b>Exfoliación:</b> elimina células muertas y prepara la piel.</li>
-                <li><b>Vaporización con ozono:</b> abre poros y facilita la extracción de impurezas.</li>
-                <li><b>Extracción:</b> puntos negros y exceso de grasa.</li>
-                <li><b>Mascarilla calmante:</b> hidrata, equilibra y reduce rojeces.</li>
-              </ul>
-              <h5>¿Qué debes saber?</h5>
-              <ul>
-                <li>No vengas con maquillaje pesado el día de tu cita.</li>
-                <li>Evita exposición solar intensa o rayos UVA en las 48h previas.</li>
-                <li>No uses productos con ácidos o retinol en las 72h previas.</li>
-                <li>Si estás en tratamiento dermatológico (como Roacután), consúltalo antes de reservar.</li>
-                <li>Tras la sesión, evita sol directo, piscinas y saunas durante 48h.</li>
-              </ul>
-              <h5>Restricciones</h5>
-              <ul>
-                <li>Infecciones cutáneas activas (herpes, eccemas, dermatitis, acné severo inflamatorio).</li>
-                <li>Piel con quemaduras solares recientes.</li>
-                <li>Heridas abiertas o tratamientos agresivos previos (láser, peeling químico fuerte, micropigmentación).</li>
-                <li>Uso de retinoides orales (Roacután) sin aprobación médica.</li>
-              </ul>
+      <div class="individual-grid">
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_c0946b166f2d424da90ae8f6e9ee0e85f003.jpg/v1/fit/w_248,h_440,q_90,enc_avif,quality_auto/dfdf73_c0946b166f2d424da90ae8f6e9ee0e85f003.jpg" alt="Limpieza facial profunda en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex1_name">Limpieza facial profunda <span class="dur">1 h</span></span><span class="price">75 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="limpieza" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Limpieza%20facial%20profunda%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
-          </details>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p>Un tratamiento clásico y esencial para devolver a tu piel su pureza y equilibrio. A través de un protocolo completo de higiene, extracción y nutrición conseguimos oxigenar la piel, mejorar su textura y darle un aspecto fresco y saludable.</p>
+                <ul>
+                  <li><b>Exfoliación:</b> elimina células muertas y prepara la piel.</li>
+                  <li><b>Vaporización con ozono:</b> abre poros y facilita la extracción de impurezas.</li>
+                  <li><b>Extracción:</b> puntos negros y exceso de grasa.</li>
+                  <li><b>Mascarilla calmante:</b> hidrata, equilibra y reduce rojeces.</li>
+                </ul>
+                <h5>¿Qué debes saber?</h5>
+                <ul>
+                  <li>No vengas con maquillaje pesado el día de tu cita.</li>
+                  <li>Evita exposición solar intensa o rayos UVA en las 48h previas.</li>
+                  <li>No uses productos con ácidos o retinol en las 72h previas.</li>
+                  <li>Si estás en tratamiento dermatológico (como Roacután), consúltalo antes de reservar.</li>
+                  <li>Tras la sesión, evita sol directo, piscinas y saunas durante 48h.</li>
+                </ul>
+                <h5>Restricciones</h5>
+                <ul>
+                  <li>Infecciones cutáneas activas (herpes, eccemas, dermatitis, acné severo inflamatorio).</li>
+                  <li>Piel con quemaduras solares recientes.</li>
+                  <li>Heridas abiertas o tratamientos agresivos previos (láser, peeling químico fuerte, micropigmentación).</li>
+                  <li>Uso de retinoides orales (Roacután) sin aprobación médica.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
         </div>
-        <div class="extras-row">
-          <div class="extras-row-top"><span class="name" data-i18n="ex2_name">CC Glow <span class="dur">1 h 15 min</span></span><span class="price">120 €</span></div>
-          <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20CC%20Glow%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener">Reservar</a>
-          <details>
-            <summary>Leer más</summary>
-            <div class="details-body">
-              <h5>Sobre este servicio</h5>
-              <p>Tratamiento semipermanente que unifica el tono de la piel y aporta un efecto luminoso natural, tipo "buena cara" incluso sin maquillaje.</p>
-              <h5>Restricciones</h5>
-              <ul><li>Embarazo, alergias conocidas al producto o piel muy sensibilizada.</li></ul>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_6d734cdbecfd45d6ad34089023597ba4~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_6d734cdbecfd45d6ad34089023597ba4~mv2.jpg" alt="Hollywood Peel individual en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex_hp_name">Hollywood Peel <span class="dur">45 min</span></span><span class="price">95 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="hollywood" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Hollywood%20Peel%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
-          </details>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p data-i18n="ex_hp_desc">La versión individual del Hollywood Peel, sin limpieza facial combinada: peeling de carbono que rejuvenece la piel, minimiza poros y aporta un efecto flash inmediato.</p>
+              </div>
+            </details>
+          </div>
         </div>
-        <div class="extras-row">
-          <div class="extras-row-top"><span class="name" data-i18n="ex3_name">Flash Eye <span class="dur">30 min</span></span><span class="price">50 €</span></div>
-          <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Flash%20Eye%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener">Reservar</a>
-          <details>
-            <summary>Leer más</summary>
-            <div class="details-body">
-              <h5>Sobre este servicio</h5>
-              <p>Tratamiento exprés para el contorno de ojos: reduce bolsas, ojeras y signos de cansancio con un efecto inmediato.</p>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_f2236f66500347eba8272d2e8d2e4a01~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_f2236f66500347eba8272d2e8d2e4a01~mv2.jpg" alt="Hydrafacial individual en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex_hf_name">Hydrafacial <span class="dur">45 min</span></span><span class="price">100 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="hydrafacial" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Hydrafacial%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
-          </details>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p data-i18n="ex_hf_desc">La versión individual del Hydrafacial, sin extracción combinada: limpieza, exfoliación e hidratación con tecnología profesional en su formato más rápido.</p>
+              </div>
+            </details>
+          </div>
         </div>
-        <div class="extras-row">
-          <div class="extras-row-top"><span class="name" data-i18n="ex4_name">Hidratación de labios <span class="dur">30 min</span></span><span class="price">50 €</span></div>
-          <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Hidrataci%C3%B3n%20de%20labios%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener">Reservar</a>
-          <details>
-            <summary>Leer más</summary>
-            <div class="details-body">
-              <h5>Sobre este servicio</h5>
-              <p>Exfoliación e hidratación profunda para labios más suaves, definidos y con mejor aspecto.</p>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg" alt="Dermapen individual en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex_dp_name">Dermapen <span class="dur">1 h</span></span><span class="price">80 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="dermapen" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Dermapen%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
-          </details>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p data-i18n="ex_dp_desc">La versión individual del Dermapen, sin limpieza combinada: microneedling de precisión que estimula el colágeno, ideal para textura irregular, poros y marcas de acné.</p>
+              </div>
+            </details>
+          </div>
         </div>
-        <div class="extras-row">
-          <div class="extras-row-top"><span class="name" data-i18n="ex5_name">Microdermoabrasión <span class="dur">45 min</span></span><span class="price">40 €</span></div>
-          <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Microdermoabrasi%C3%B3n%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener">Reservar</a>
-          <details>
-            <summary>Leer más</summary>
-            <div class="details-body">
-              <h5>Sobre este servicio</h5>
-              <p>Exfoliación mecánica que renueva la superficie de la piel, mejora la textura y prepara la piel para absorber mejor otros tratamientos.</p>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg" alt="Dermapen con Exosomas en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex_dpexo_name">Dermapen con Exosomas <span class="dur">1 h</span></span><span class="price" data-i18n="ex_dpexo_price">Consultar precio</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="dermapen_exo" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Dermapen%20con%20Exosomas%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
-          </details>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p data-i18n="ex_dpexo_desc">Bioestimulación avanzada: microneedling combinado con exosomas para una regeneración celular más profunda, firmeza y luminosidad.</p>
+              </div>
+            </details>
+          </div>
         </div>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_0bb09e5d15a34d1b85b60be43cd07a5ff003.jpg/v1/fit/w_248,h_440,q_90,enc_avif,quality_auto/dfdf73_0bb09e5d15a34d1b85b60be43cd07a5ff003.jpg" alt="Microdermoabrasión en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex5_name">Microdermoabrasión <span class="dur">45 min</span></span><span class="price">40 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="microdermo" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Microdermoabrasi%C3%B3n%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
+            </div>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p>Exfoliación mecánica que renueva la superficie de la piel, mejora la textura y prepara la piel para absorber mejor otros tratamientos.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_29ada7ba0c5742bd9d1cf720ae88dd89f003.jpg/v1/fit/w_248,h_440,q_90,enc_avif,quality_auto/dfdf73_29ada7ba0c5742bd9d1cf720ae88dd89f003.jpg" alt="Hidratación de labios en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex4_name">Hidratación de labios <span class="dur">30 min</span></span><span class="price">50 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="labios" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Hidrataci%C3%B3n%20de%20labios%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
+            </div>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p>Exfoliación e hidratación profunda para labios más suaves, definidos y con mejor aspecto.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_3c645c774c2b4c00b8e3ca4be5668a3ef003.jpg/v1/fit/w_248,h_440,q_90,enc_avif,quality_auto/dfdf73_3c645c774c2b4c00b8e3ca4be5668a3ef003.jpg" alt="Flash Eye en FAOR Beauty Skin Madrid" loading="lazy">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex3_name">Flash Eye <span class="dur">30 min</span></span><span class="price">50 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="flasheye" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Flash%20Eye%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
+            </div>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p>Tratamiento exprés para el contorno de ojos: reduce bolsas, ojeras y signos de cansancio con un efecto inmediato.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <img src="https://static.wixstatic.com/media/dfdf73_2f6ea7c9893a4a0cb32b7e1c0f5f26bd~mv2.png/v1/fill/w_228,h_225,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/FAOR%201.png" alt="CC Glow en FAOR Beauty Skin Madrid" loading="lazy" style="background:var(--rose-mist);object-fit:contain;padding:30px;">
+          <div class="mini-card-body">
+            <div class="mini-card-top"><span class="name" data-i18n="ex2_name">CC Glow <span class="dur">1 h 15 min</span></span><span class="price">120 €</span></div>
+            <div class="mini-card-actions">
+              <button type="button" class="gallery-btn" data-gallery="ccglow" data-i18n="ind_gallery_btn">Ver galería</button>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20CC%20Glow%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
+            </div>
+            <details>
+              <summary>Leer más</summary>
+              <div class="details-body">
+                <h5>Sobre este servicio</h5>
+                <p>Tratamiento semipermanente que unifica el tono de la piel y aporta un efecto luminoso natural, tipo "buena cara" incluso sin maquillaje.</p>
+                <h5>Restricciones</h5>
+                <ul><li>Embarazo, alergias conocidas al producto o piel muy sensibilizada.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
       </div>
 
       <div class="services-cta">
@@ -782,6 +914,19 @@
   </div>
 </footer>
 
+
+<div class="gallery-modal" id="galleryModal" aria-hidden="true">
+  <div class="gallery-modal-inner">
+    <button type="button" class="gallery-close" id="galleryClose" aria-label="Cerrar">&times;</button>
+    <h3 id="galleryTitle"></h3>
+    <div class="gallery-tabs">
+      <button type="button" class="gallery-tab active" data-tab="fotos" data-i18n="ind_tab_fotos">Fotos</button>
+      <button type="button" class="gallery-tab" data-tab="videos" data-i18n="ind_tab_videos">Videos</button>
+    </div>
+    <div class="gallery-media-grid" id="galleryContent"></div>
+  </div>
+</div>
+
 <script>
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => header.style.boxShadow = window.scrollY > 30 ? '0 1px 0 rgba(0,0,0,.05)' : 'none');
@@ -800,8 +945,10 @@
 
 
 <script>
-  const I18N = {"es": {"nav_inicio": "Inicio", "nav_oferta": "Oferta julio", "nav_servicios": "Servicios", "nav_nosotros": "Sobre nosotros", "nav_opiniones": "Opiniones", "nav_contacto": "Contacto", "nav_cta": "Reservar · WhatsApp", "hero_badge": "★★★★★ 5,0 en Treatwell (108) y Google (64)", "hero_title": "¿Qué esperas para<br/>descubrir tu <em>mejor versión?</em>", "hero_lead": "<strong class=\"hl\">Referentes en tratamientos faciales</strong> en el Barrio de Salamanca, Madrid. Hydrafacial, Dermapen, Hollywood Peel y CC Glow, con resultados visibles desde la primera sesión.", "hero_btn_wa": "Reservar por WhatsApp", "hero_btn_ver": "Ver tratamientos", "stat_media": "Valoración media", "stat_tw": "Opiniones en Treatwell", "stat_gg": "Opiniones en Google", "stat_leader": "Líderes en tratamientos faciales del Barrio de Salamanca", "stat_metro": "Metro Lista, a 2 min andando", "offer_badge": "Oferta de julio", "offer_title": "El tratamiento de las estrellas de Hollywood, con 30 € de regalo", "offer_desc": "Hollywood Peel + Limpieza facial profunda: el ritual que eligen las celebrities antes de pisar la alfombra roja, ahora en FAOR. Solo durante julio.", "offer_save": "Ahorras 30 €", "offer_li1": "Limpieza facial profunda previa, para preparar la piel", "offer_li2": "Loción de carbono activo que se adhiere a las impurezas", "offer_li3": "Efecto flash inmediato, sin dolor y sin días de recuperación", "offer_li4": "1 h 20 min · resultado visible nada más salir", "offer_btn": "Reservar la oferta de julio", "offer_note": "Válida hasta el 31 de julio. Sujeta a disponibilidad de agenda.", "offer_card_h": "¿Por qué \"el tratamiento de las estrellas\"?", "offer_card_p": "Se llama así porque es el ritual que muchas celebrities reservan antes de eventos importantes: no duele, no deja la piel roja ni requiere días de recuperación, y el resultado se ve al momento. Aplicamos una loción de carbono activo que penetra en los poros y se adhiere a las impurezas, el exceso de grasa y las células muertas; al retirarla, se lleva todo eso consigo mientras estimula el colágeno y afina el poro. La piel queda más luminosa, uniforme y con ese efecto \"recién salida de cabina\" — perfecto antes de una boda, un evento o simplemente para llegar al verano con la piel en su mejor momento.", "services_eyebrow": "Tratamientos faciales en Madrid", "services_title": "Todos nuestros servicios", "services_desc": "Protocolos combinados —lo más reservado— y tratamientos individuales, cada uno pensado para un objetivo concreto de tu piel.", "f1_tag": "Más reservado", "f1_desc": "Microneedling de precisión que estimula el colágeno. Ideal para textura irregular, poros y marcas de acné.", "save_tw": "−15% reservando en Treatwell", "btn_reservar": "Reservar", "f2_tag": "Glow inmediato", "f2_desc": "Limpieza, exfoliación e hidratación intensa en una sola sesión. Piel luminosa desde el primer tratamiento.", "f3_tag": "Efecto flash", "f3_desc": "El peeling favorito de las celebridades: rejuvenece, unifica el tono y aporta un efecto flash inmediato.", "save_julio": "115 € en julio", "f4_tag": "Nuestro tratamiento estrella", "f4_desc": "Une lo mejor de la tecnología no invasiva con la bioestimulación intensiva para una regeneración profunda.", "extras_title": "Tratamientos individuales", "ex1_name": "Limpieza facial profunda <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15 min</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Hidratación de labios <span class=\"dur\">30 min</span>", "ex5_name": "Microdermoabrasión <span class=\"dur\">45 min</span>", "process_eyebrow": "Cómo trabajamos", "process_title": "Tu ritual en 4 pasos", "p1_h": "Diagnóstico", "p1_p": "Analizamos tu piel y tu objetivo para diseñar el protocolo exacto que necesitas.", "p2_h": "Preparación", "p2_p": "Limpieza e higienización profunda antes de cualquier tratamiento facial.", "p3_h": "Tratamiento", "p3_p": "Aplicamos la técnica elegida con precisión y producto profesional.", "p4_h": "Cierre y rutina en casa", "p4_p": "Hidratación, protección solar y una rutina personalizada según tu tipo de piel, para seguir viendo mejoras después de la cita.", "founder_eyebrow": "Quién está detrás de FAOR", "founder_title": "Un espacio de bienestar, belleza y renovación", "founder_p1": "Un espacio de bienestar, belleza y renovación en pleno corazón de Madrid. Nuestro equipo combina técnicas avanzadas de estética con un enfoque personalizado para realzar tu piel, tu cuerpo y tu confianza en un entorno privado, diseñado para ti.", "founder_p2": "En FAOR Beauty Skin creemos que la belleza es bienestar. <b class=\"hl\">Francismar Oria</b>, nuestra fundadora, inició este proyecto con la visión de crear una cabina donde el cuidado estético fuese más que un tratamiento: una experiencia transformadora.", "founder_p3": "Hoy, FAOR es un equipo en crecimiento que comparte la misma pasión por el detalle, la excelencia y el trato cercano. Nos mueve el deseo de ofrecer un servicio profesional y exclusivo, pero siempre cálido y accesible.", "founder_p4": "Queremos que cada visita sea un momento para ti: un respiro en la rutina y una inversión en tu bienestar.", "founder_b1": "Valoración en Treatwell", "cabina_eyebrow": "Nuestra cabina", "cabina_h": "Un entorno privado, diseñado para ti", "cabina_p": "Cada sesión se realiza en un espacio íntimo y cuidado al detalle, pensado para que te desconectes desde el primer minuto. Tecnología profesional, ambiente cálido y toda la atención puesta en tu piel.", "gallery_eyebrow": "Galería", "gallery_title": "Tratamientos que renuevan tu piel", "reviews_eyebrow": "Lo que opinan de nosotros", "reviews_title": "Referencia en el Barrio de Salamanca", "rev1": "\"El tratamiento se extendió unos minutos más porque Francis no deja ninguna impureza sin tratar.\"", "rev2": "He probado varios centros de la zona y este ha sido, sin duda, el mejor: tratamiento impecable y rutina de casa explicada paso a paso.", "rev3": "Profesional y muy atenta, ambiente agradable y un resultado que se nota desde la primera sesión.", "review_source": "Ver todas las opiniones en <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Dónde estamos", "loc_h": "En el corazón del Barrio de Salamanca", "loc_p": "Calle del General Díaz Porlier 50, a solo <b class=\"hl\">2 minutos andando de metro Lista</b>. Un espacio acogedor y fácil de encontrar, pensado para que tu cita empiece a relajarte desde que cruzas la puerta.", "contact_eyebrow": "Contacto", "contact_title": "Reserva tu tratamiento facial", "c_dir": "Dirección", "c_wa": "WhatsApp", "c_email": "Email", "c_insta": "Instagram", "c_horario": "Horario", "c_horario_val": "Lun–Vie 10:00–20:00 · Sáb 10:00–16:00 · Dom cerrado", "foot_terminos": "Términos y condiciones", "foot_privacidad": "Política de privacidad", "f1_name": "Dermapen + Limpieza profunda", "f4_name": "Hydrafacial + Dermapen"}, "en": {"nav_inicio": "Home", "nav_oferta": "July offer", "nav_servicios": "Services", "nav_nosotros": "About us", "nav_opiniones": "Reviews", "nav_contacto": "Contact", "nav_cta": "Book · WhatsApp", "hero_badge": "★★★★★ 5.0 on Treatwell (108) and Google (64)", "hero_title": "What are you waiting for<br/>to discover your <em>best version?</em>", "hero_lead": "<strong class=\"hl\">Leaders in facial treatments</strong> in the Salamanca neighborhood, Madrid. Hydrafacial, Dermapen (Microneedling), Hollywood Peel and CC Glow, with visible results from the first session.", "hero_btn_wa": "Book via WhatsApp", "hero_btn_ver": "View treatments", "stat_media": "Average rating", "stat_tw": "Reviews on Treatwell", "stat_gg": "Reviews on Google", "stat_leader": "Leaders in facial treatments in the Salamanca neighborhood", "stat_metro": "Metro Lista, 2 min walk", "offer_badge": "July offer", "offer_title": "The Hollywood stars' treatment, with a €30 gift", "offer_desc": "Hollywood Peel + Deep facial cleansing: the ritual celebrities choose before the red carpet, now at FAOR. This July only.", "offer_save": "Save €30", "offer_li1": "Deep facial cleansing beforehand, to prep the skin", "offer_li2": "Active carbon lotion that binds to impurities", "offer_li3": "Instant flash effect, painless and no downtime", "offer_li4": "1 h 20 min · visible results right away", "offer_btn": "Book the July offer", "offer_note": "Valid until July 31st. Subject to availability.", "offer_card_h": "Why \"the stars' treatment\"?", "offer_card_p": "It's called that because it's the ritual many celebrities book before big events: it doesn't hurt, doesn't leave skin red, needs no downtime, and results show instantly. We apply an active carbon lotion that penetrates pores and binds to impurities, excess oil and dead skin cells; when removed, it takes all that with it while stimulating collagen and refining pores. Skin looks brighter, more even, with that \"fresh out of the treatment room\" glow — perfect before a wedding, an event, or simply to head into summer with your skin at its best.", "services_eyebrow": "Facial treatments in Madrid", "services_title": "All our services", "services_desc": "Combined protocols —our most booked— and individual treatments, each designed for a specific skin goal.", "f1_tag": "Most booked", "f1_desc": "Precision microneedling that stimulates collagen. Ideal for uneven texture, pores and acne marks.", "save_tw": "−15% booking on Treatwell", "btn_reservar": "Book", "f2_tag": "Instant glow", "f2_desc": "Cleansing, exfoliation and intense hydration in a single session. Luminous skin from the first treatment.", "f3_tag": "Flash effect", "f3_desc": "The celebrities' favorite peel: rejuvenates, evens out tone and gives an instant flash effect.", "save_julio": "€115 in July", "f4_tag": "Our signature treatment", "f4_desc": "Combines the best of non-invasive technology with intensive biostimulation for deep regeneration.", "extras_title": "Individual treatments", "ex1_name": "Deep facial cleansing <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15 min</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Lip hydration <span class=\"dur\">30 min</span>", "ex5_name": "Microdermabrasion <span class=\"dur\">45 min</span>", "process_eyebrow": "How we work", "process_title": "Your 4-step ritual", "p1_h": "Diagnosis", "p1_p": "We analyze your skin and your goal to design the exact protocol you need.", "p2_h": "Preparation", "p2_p": "Deep cleansing and sanitizing before any facial treatment.", "p3_h": "Treatment", "p3_p": "We apply the chosen technique with precision and professional products.", "p4_h": "Closing & home routine", "p4_p": "Hydration, sun protection and a routine tailored to your skin type, so results keep improving after your visit.", "founder_eyebrow": "Who's behind FAOR", "founder_title": "A space for wellbeing, beauty and renewal", "founder_p1": "A space for wellbeing, beauty and renewal in the heart of Madrid. Our team combines advanced aesthetic techniques with a personalized approach to enhance your skin, your body and your confidence in a private setting, designed for you.", "founder_p2": "At FAOR Beauty Skin we believe beauty is wellbeing. <b class=\"hl\">Francismar Oria</b>, our founder, started this project with the vision of creating a treatment room where skincare would be more than a treatment: a transformative experience.", "founder_p3": "Today, FAOR is a growing team that shares the same passion for detail, excellence and close, personal care. We're driven by the desire to offer a professional, exclusive service that's always warm and approachable.", "founder_p4": "We want every visit to be a moment just for you: a break from routine and an investment in your wellbeing.", "founder_b1": "Rating on Treatwell", "cabina_eyebrow": "Our treatment room", "cabina_h": "A private space, designed for you", "cabina_p": "Every session takes place in an intimate, carefully designed space, made so you can switch off from the first minute. Professional technology, a warm atmosphere, and all the attention on your skin.", "gallery_eyebrow": "Gallery", "gallery_title": "Treatments that renew your skin", "reviews_eyebrow": "What people say about us", "reviews_title": "A reference in the Salamanca neighborhood", "rev1": "\"The treatment ran a few extra minutes because Francis doesn't leave a single impurity untreated.\"", "rev2": "I've tried several places in the area and this was, without a doubt, the best: flawless treatment and an at-home routine explained step by step.", "rev3": "Professional and very attentive, pleasant atmosphere, and results you notice from the first session.", "review_source": "See all reviews on <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Where we are", "loc_h": "In the heart of the Salamanca neighborhood", "loc_p": "Calle del General Díaz Porlier 50, just <b class=\"hl\">2 minutes' walk from Metro Lista</b>. A welcoming, easy-to-find space, designed so your visit starts to relax you the moment you walk in.", "contact_eyebrow": "Contact", "contact_title": "Book your facial treatment", "c_dir": "Address", "c_wa": "WhatsApp", "c_email": "Email", "c_insta": "Instagram", "c_horario": "Hours", "c_horario_val": "Mon–Fri 10:00–20:00 · Sat 10:00–16:00 · Sun closed", "foot_terminos": "Terms and conditions", "foot_privacidad": "Privacy policy", "f1_name": "Dermapen (Microneedling) + Deep Cleansing", "f4_name": "Hydrafacial + Dermapen (Microneedling)"}, "fr": {"nav_inicio": "Accueil", "nav_oferta": "Offre de juillet", "nav_servicios": "Services", "nav_nosotros": "À propos", "nav_opiniones": "Avis", "nav_contacto": "Contact", "nav_cta": "Réserver · WhatsApp", "hero_badge": "★★★★★ 5,0 sur Treatwell (108) et Google (64)", "hero_title": "Qu'attendez-vous pour<br/>découvrir votre <em>meilleure version ?</em>", "hero_lead": "<strong class=\"hl\">Référence en soins du visage</strong> dans le quartier de Salamanque, Madrid. Hydrafacial, Dermapen (Microneedling), Hollywood Peel et CC Glow, avec des résultats visibles dès la première séance.", "hero_btn_wa": "Réserver par WhatsApp", "hero_btn_ver": "Voir les soins", "stat_media": "Note moyenne", "stat_tw": "Avis sur Treatwell", "stat_gg": "Avis sur Google", "stat_leader": "Référence en soins du visage dans le quartier de Salamanque", "stat_metro": "Métro Lista, à 2 min à pied", "offer_badge": "Offre de juillet", "offer_title": "Le soin des stars d'Hollywood, avec 30 € offerts", "offer_desc": "Hollywood Peel + Nettoyage facial profond : le rituel choisi par les célébrités avant le tapis rouge, désormais chez FAOR. Uniquement en juillet.", "offer_save": "Économisez 30 €", "offer_li1": "Nettoyage facial profond au préalable, pour préparer la peau", "offer_li2": "Lotion au charbon actif qui se lie aux impuretés", "offer_li3": "Effet flash immédiat, sans douleur ni convalescence", "offer_li4": "1 h 20 · résultat visible dès la sortie", "offer_btn": "Réserver l'offre de juillet", "offer_note": "Valable jusqu'au 31 juillet. Sous réserve de disponibilité.", "offer_card_h": "Pourquoi \"le soin des stars\" ?", "offer_card_p": "On l'appelle ainsi car c'est le rituel que de nombreuses célébrités réservent avant les grands événements : il ne fait pas mal, ne laisse pas la peau rouge, ne nécessite aucune convalescence, et le résultat se voit immédiatement. Nous appliquons une lotion au charbon actif qui pénètre les pores et se lie aux impuretés, à l'excès de sébum et aux cellules mortes ; en la retirant, elle emporte tout cela avec elle tout en stimulant le collagène et en affinant les pores. La peau est plus lumineuse, plus uniforme, avec cet effet \"sortie de cabine\" — parfait avant un mariage, un événement, ou simplement pour aborder l'été avec une peau au meilleur de sa forme.", "services_eyebrow": "Soins du visage à Madrid", "services_title": "Tous nos services", "services_desc": "Protocoles combinés — les plus réservés — et soins individuels, chacun pensé pour un objectif précis de votre peau.", "f1_tag": "Le plus réservé", "f1_desc": "Microneedling de précision qui stimule le collagène. Idéal pour la texture irrégulière, les pores et les marques d'acné.", "save_tw": "−15% en réservant sur Treatwell", "btn_reservar": "Réserver", "f2_tag": "Éclat immédiat", "f2_desc": "Nettoyage, exfoliation et hydratation intense en une seule séance. Peau lumineuse dès le premier soin.", "f3_tag": "Effet flash", "f3_desc": "Le peeling préféré des célébrités : rajeunit, unifie le teint et procure un effet flash immédiat.", "save_julio": "115 € en juillet", "f4_tag": "Notre soin signature", "f4_desc": "Allie le meilleur de la technologie non invasive à la biostimulation intensive pour une régénération profonde.", "extras_title": "Soins individuels", "ex1_name": "Nettoyage facial profond <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Hydratation des lèvres <span class=\"dur\">30 min</span>", "ex5_name": "Microdermabrasion <span class=\"dur\">45 min</span>", "process_eyebrow": "Comment nous travaillons", "process_title": "Votre rituel en 4 étapes", "p1_h": "Diagnostic", "p1_p": "Nous analysons votre peau et votre objectif pour concevoir le protocole exact dont vous avez besoin.", "p2_h": "Préparation", "p2_p": "Nettoyage et hygiène en profondeur avant tout soin du visage.", "p3_h": "Soin", "p3_p": "Nous appliquons la technique choisie avec précision et des produits professionnels.", "p4_h": "Clôture et routine à la maison", "p4_p": "Hydratation, protection solaire et une routine personnalisée selon votre type de peau, pour continuer à voir des progrès après le rendez-vous.", "founder_eyebrow": "Qui est derrière FAOR", "founder_title": "Un espace de bien-être, de beauté et de renouveau", "founder_p1": "Un espace de bien-être, de beauté et de renouveau en plein cœur de Madrid. Notre équipe combine des techniques esthétiques avancées à une approche personnalisée pour sublimer votre peau, votre corps et votre confiance, dans un cadre privé, pensé pour vous.", "founder_p2": "Chez FAOR Beauty Skin, nous croyons que la beauté, c'est le bien-être. <b class=\"hl\">Francismar Oria</b>, notre fondatrice, a lancé ce projet avec la vision de créer une cabine où le soin esthétique serait plus qu'un traitement : une expérience transformatrice.", "founder_p3": "Aujourd'hui, FAOR est une équipe en pleine croissance qui partage la même passion du détail, de l'excellence et de la proximité. Nous sommes animés par le désir d'offrir un service professionnel et exclusif, toujours chaleureux et accessible.", "founder_p4": "Nous voulons que chaque visite soit un moment rien que pour vous : une pause dans la routine et un investissement dans votre bien-être.", "founder_b1": "Note sur Treatwell", "cabina_eyebrow": "Notre cabine", "cabina_h": "Un espace privé, pensé pour vous", "cabina_p": "Chaque séance se déroule dans un espace intime, soigné dans les moindres détails, pensé pour vous déconnecter dès la première minute. Technologie professionnelle, ambiance chaleureuse et toute l'attention portée sur votre peau.", "gallery_eyebrow": "Galerie", "gallery_title": "Des soins qui renouvellent votre peau", "reviews_eyebrow": "Ce que l'on dit de nous", "reviews_title": "Une référence dans le quartier de Salamanque", "rev1": "\"Le soin a duré quelques minutes de plus car Francis ne laisse passer aucune impureté.\"", "rev2": "J'ai essayé plusieurs centres du quartier et celui-ci a été, sans aucun doute, le meilleur : soin impeccable et routine à la maison expliquée étape par étape.", "rev3": "Professionnelle et très attentionnée, ambiance agréable et un résultat visible dès la première séance.", "review_source": "Voir tous les avis sur <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Où nous trouver", "loc_h": "Au cœur du quartier de Salamanque", "loc_p": "Calle del General Díaz Porlier 50, à seulement <b class=\"hl\">2 minutes à pied du métro Lista</b>. Un espace accueillant et facile à trouver, pensé pour que votre rendez-vous commence à vous détendre dès votre arrivée.", "contact_eyebrow": "Contact", "contact_title": "Réservez votre soin du visage", "c_dir": "Adresse", "c_wa": "WhatsApp", "c_email": "E-mail", "c_insta": "Instagram", "c_horario": "Horaires", "c_horario_val": "Lun–Ven 10h00–20h00 · Sam 10h00–16h00 · Dim fermé", "foot_terminos": "Conditions générales", "foot_privacidad": "Politique de confidentialité", "f1_name": "Dermapen (Microneedling) + Nettoyage profond", "f4_name": "Hydrafacial + Dermapen (Microneedling)"}};
+  const I18N = {"es": {"nav_inicio": "Inicio", "nav_oferta": "Oferta julio", "nav_servicios": "Servicios", "nav_nosotros": "Sobre nosotros", "nav_opiniones": "Opiniones", "nav_contacto": "Contacto", "nav_cta": "Reservar · WhatsApp", "hero_badge": "★★★★★ 5,0 en Treatwell (108) y Google (64)", "hero_title": "¿Qué esperas para<br/>descubrir tu <em>mejor versión?</em>", "hero_lead": "<strong class=\"hl\">Referentes en tratamientos faciales</strong> en el Barrio de Salamanca, Madrid. Hydrafacial, Dermapen, Hollywood Peel y CC Glow, con resultados visibles desde la primera sesión.", "hero_btn_wa": "Reservar por WhatsApp", "hero_btn_ver": "Ver tratamientos", "stat_media": "Valoración media", "stat_tw": "Opiniones en Treatwell", "stat_gg": "Opiniones en Google", "stat_leader": "Líderes en tratamientos faciales del Barrio de Salamanca", "stat_metro": "Metro Lista, a 2 min andando", "offer_badge": "Oferta de julio", "offer_title": "El tratamiento de las estrellas de Hollywood, con 30 € de regalo", "offer_desc": "Hollywood Peel + Limpieza facial profunda: el ritual que eligen las celebrities antes de pisar la alfombra roja, ahora en FAOR. Solo durante julio.", "offer_save": "Ahorras 30 €", "offer_li1": "Limpieza facial profunda previa, para preparar la piel", "offer_li2": "Loción de carbono activo que se adhiere a las impurezas", "offer_li3": "Efecto flash inmediato, sin dolor y sin días de recuperación", "offer_li4": "1 h 20 min · resultado visible nada más salir", "offer_btn": "Reservar la oferta de julio", "offer_note": "Válida hasta el 31 de julio. Sujeta a disponibilidad de agenda.", "offer_card_h": "¿Por qué \"el tratamiento de las estrellas\"?", "offer_card_p": "Se llama así porque es el ritual que muchas celebrities reservan antes de eventos importantes: no duele, no deja la piel roja ni requiere días de recuperación, y el resultado se ve al momento. Aplicamos una loción de carbono activo que penetra en los poros y se adhiere a las impurezas, el exceso de grasa y las células muertas; al retirarla, se lleva todo eso consigo mientras estimula el colágeno y afina el poro. La piel queda más luminosa, uniforme y con ese efecto \"recién salida de cabina\" — perfecto antes de una boda, un evento o simplemente para llegar al verano con la piel en su mejor momento.", "services_eyebrow": "Tratamientos faciales en Madrid", "services_title": "Todos nuestros servicios", "services_desc": "Protocolos combinados —lo más reservado— y tratamientos individuales, cada uno pensado para un objetivo concreto de tu piel.", "f1_tag": "Más reservado", "f1_desc": "Microneedling de precisión que estimula el colágeno. Ideal para textura irregular, poros y marcas de acné.", "save_tw": "−15% reservando en Treatwell", "btn_reservar": "Reservar", "f2_tag": "Glow inmediato", "f2_desc": "Limpieza, exfoliación e hidratación intensa en una sola sesión. Piel luminosa desde el primer tratamiento.", "f3_tag": "Efecto flash", "f3_desc": "El peeling favorito de las celebridades: rejuvenece, unifica el tono y aporta un efecto flash inmediato.", "save_julio": "115 € en julio", "f4_tag": "Nuestro tratamiento estrella", "f4_desc": "Une lo mejor de la tecnología no invasiva con la bioestimulación intensiva para una regeneración profunda.", "extras_title": "Tratamientos individuales", "ex1_name": "Limpieza facial profunda <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15 min</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Hidratación de labios <span class=\"dur\">30 min</span>", "ex5_name": "Microdermoabrasión <span class=\"dur\">45 min</span>", "process_eyebrow": "Cómo trabajamos", "process_title": "Tu ritual en 4 pasos", "p1_h": "Diagnóstico", "p1_p": "Analizamos tu piel y tu objetivo para diseñar el protocolo exacto que necesitas.", "p2_h": "Preparación", "p2_p": "Limpieza e higienización profunda antes de cualquier tratamiento facial.", "p3_h": "Tratamiento", "p3_p": "Aplicamos la técnica elegida con precisión y producto profesional.", "p4_h": "Cierre y rutina en casa", "p4_p": "Hidratación, protección solar y una rutina personalizada según tu tipo de piel, para seguir viendo mejoras después de la cita.", "founder_eyebrow": "Quién está detrás de FAOR", "founder_title": "Un espacio de bienestar, belleza y renovación", "founder_p1": "Un espacio de bienestar, belleza y renovación en pleno corazón de Madrid. Nuestro equipo combina técnicas avanzadas de estética con un enfoque personalizado para realzar tu piel, tu cuerpo y tu confianza en un entorno privado, diseñado para ti.", "founder_p2": "En FAOR Beauty Skin creemos que la belleza es bienestar. <b class=\"hl\">Francismar Oria</b>, nuestra fundadora, inició este proyecto con la visión de crear una cabina donde el cuidado estético fuese más que un tratamiento: una experiencia transformadora.", "founder_p3": "Hoy, FAOR es un equipo en crecimiento que comparte la misma pasión por el detalle, la excelencia y el trato cercano. Nos mueve el deseo de ofrecer un servicio profesional y exclusivo, pero siempre cálido y accesible.", "founder_p4": "Queremos que cada visita sea un momento para ti: un respiro en la rutina y una inversión en tu bienestar.", "founder_b1": "Valoración en Treatwell", "cabina_eyebrow": "Nuestra cabina", "cabina_h": "Un entorno privado, diseñado para ti", "cabina_p": "Cada sesión se realiza en un espacio íntimo y cuidado al detalle, pensado para que te desconectes desde el primer minuto. Tecnología profesional, ambiente cálido y toda la atención puesta en tu piel.", "gallery_eyebrow": "Galería", "gallery_title": "Tratamientos que renuevan tu piel", "reviews_eyebrow": "Lo que opinan de nosotros", "reviews_title": "Referencia en el Barrio de Salamanca", "rev1": "\"El tratamiento se extendió unos minutos más porque Francis no deja ninguna impureza sin tratar.\"", "rev2": "He probado varios centros de la zona y este ha sido, sin duda, el mejor: tratamiento impecable y rutina de casa explicada paso a paso.", "rev3": "Profesional y muy atenta, ambiente agradable y un resultado que se nota desde la primera sesión.", "review_source": "Ver todas las opiniones en <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Dónde estamos", "loc_h": "En el corazón del Barrio de Salamanca", "loc_p": "Calle del General Díaz Porlier 50, a solo <b class=\"hl\">2 minutos andando de metro Lista</b>. Un espacio acogedor y fácil de encontrar, pensado para que tu cita empiece a relajarte desde que cruzas la puerta.", "contact_eyebrow": "Contacto", "contact_title": "Reserva tu tratamiento facial", "c_dir": "Dirección", "c_wa": "WhatsApp", "c_email": "Email", "c_insta": "Instagram", "c_horario": "Horario", "c_horario_val": "Lun–Vie 10:00–20:00 · Sáb 10:00–16:00 · Dom cerrado", "foot_terminos": "Términos y condiciones", "foot_privacidad": "Política de privacidad", "f1_name": "Dermapen + Limpieza profunda", "f4_name": "Hydrafacial + Dermapen", "ind_gallery_btn": "Ver galería", "ind_tab_fotos": "Fotos", "ind_tab_videos": "Videos", "ex_hp_name": "Hollywood Peel <span class=\"dur\">45 min</span>", "ex_hp_desc": "La versión individual del Hollywood Peel, sin limpieza facial combinada: peeling de carbono que rejuvenece la piel, minimiza poros y aporta un efecto flash inmediato.", "ex_hf_name": "Hydrafacial <span class=\"dur\">45 min</span>", "ex_hf_desc": "La versión individual del Hydrafacial, sin extracción combinada: limpieza, exfoliación e hidratación con tecnología profesional en su formato más rápido.", "ex_dp_name": "Dermapen <span class=\"dur\">1 h</span>", "ex_dp_desc": "La versión individual del Dermapen, sin limpieza combinada: microneedling de precisión que estimula el colágeno, ideal para textura irregular, poros y marcas de acné.", "ex_dpexo_name": "Dermapen con Exosomas <span class=\"dur\">1 h</span>", "ex_dpexo_price": "Consultar precio", "ex_dpexo_desc": "Bioestimulación avanzada: microneedling combinado con exosomas para una regeneración celular más profunda, firmeza y luminosidad.", "gallery_empty_photos": "Fotos próximamente.", "gallery_empty_videos": "Videos próximamente."}, "en": {"nav_inicio": "Home", "nav_oferta": "July offer", "nav_servicios": "Services", "nav_nosotros": "About us", "nav_opiniones": "Reviews", "nav_contacto": "Contact", "nav_cta": "Book · WhatsApp", "hero_badge": "★★★★★ 5.0 on Treatwell (108) and Google (64)", "hero_title": "What are you waiting for<br/>to discover your <em>best version?</em>", "hero_lead": "<strong class=\"hl\">Leaders in facial treatments</strong> in the Salamanca neighborhood, Madrid. Hydrafacial, Dermapen (Microneedling), Hollywood Peel and CC Glow, with visible results from the first session.", "hero_btn_wa": "Book via WhatsApp", "hero_btn_ver": "View treatments", "stat_media": "Average rating", "stat_tw": "Reviews on Treatwell", "stat_gg": "Reviews on Google", "stat_leader": "Leaders in facial treatments in the Salamanca neighborhood", "stat_metro": "Metro Lista, 2 min walk", "offer_badge": "July offer", "offer_title": "The Hollywood stars' treatment, with a €30 gift", "offer_desc": "Hollywood Peel + Deep facial cleansing: the ritual celebrities choose before the red carpet, now at FAOR. This July only.", "offer_save": "Save €30", "offer_li1": "Deep facial cleansing beforehand, to prep the skin", "offer_li2": "Active carbon lotion that binds to impurities", "offer_li3": "Instant flash effect, painless and no downtime", "offer_li4": "1 h 20 min · visible results right away", "offer_btn": "Book the July offer", "offer_note": "Valid until July 31st. Subject to availability.", "offer_card_h": "Why \"the stars' treatment\"?", "offer_card_p": "It's called that because it's the ritual many celebrities book before big events: it doesn't hurt, doesn't leave skin red, needs no downtime, and results show instantly. We apply an active carbon lotion that penetrates pores and binds to impurities, excess oil and dead skin cells; when removed, it takes all that with it while stimulating collagen and refining pores. Skin looks brighter, more even, with that \"fresh out of the treatment room\" glow — perfect before a wedding, an event, or simply to head into summer with your skin at its best.", "services_eyebrow": "Facial treatments in Madrid", "services_title": "All our services", "services_desc": "Combined protocols —our most booked— and individual treatments, each designed for a specific skin goal.", "f1_tag": "Most booked", "f1_desc": "Precision microneedling that stimulates collagen. Ideal for uneven texture, pores and acne marks.", "save_tw": "−15% booking on Treatwell", "btn_reservar": "Book", "f2_tag": "Instant glow", "f2_desc": "Cleansing, exfoliation and intense hydration in a single session. Luminous skin from the first treatment.", "f3_tag": "Flash effect", "f3_desc": "The celebrities' favorite peel: rejuvenates, evens out tone and gives an instant flash effect.", "save_julio": "€115 in July", "f4_tag": "Our signature treatment", "f4_desc": "Combines the best of non-invasive technology with intensive biostimulation for deep regeneration.", "extras_title": "Individual treatments", "ex1_name": "Deep facial cleansing <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15 min</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Lip hydration <span class=\"dur\">30 min</span>", "ex5_name": "Microdermabrasion <span class=\"dur\">45 min</span>", "process_eyebrow": "How we work", "process_title": "Your 4-step ritual", "p1_h": "Diagnosis", "p1_p": "We analyze your skin and your goal to design the exact protocol you need.", "p2_h": "Preparation", "p2_p": "Deep cleansing and sanitizing before any facial treatment.", "p3_h": "Treatment", "p3_p": "We apply the chosen technique with precision and professional products.", "p4_h": "Closing & home routine", "p4_p": "Hydration, sun protection and a routine tailored to your skin type, so results keep improving after your visit.", "founder_eyebrow": "Who's behind FAOR", "founder_title": "A space for wellbeing, beauty and renewal", "founder_p1": "A space for wellbeing, beauty and renewal in the heart of Madrid. Our team combines advanced aesthetic techniques with a personalized approach to enhance your skin, your body and your confidence in a private setting, designed for you.", "founder_p2": "At FAOR Beauty Skin we believe beauty is wellbeing. <b class=\"hl\">Francismar Oria</b>, our founder, started this project with the vision of creating a treatment room where skincare would be more than a treatment: a transformative experience.", "founder_p3": "Today, FAOR is a growing team that shares the same passion for detail, excellence and close, personal care. We're driven by the desire to offer a professional, exclusive service that's always warm and approachable.", "founder_p4": "We want every visit to be a moment just for you: a break from routine and an investment in your wellbeing.", "founder_b1": "Rating on Treatwell", "cabina_eyebrow": "Our treatment room", "cabina_h": "A private space, designed for you", "cabina_p": "Every session takes place in an intimate, carefully designed space, made so you can switch off from the first minute. Professional technology, a warm atmosphere, and all the attention on your skin.", "gallery_eyebrow": "Gallery", "gallery_title": "Treatments that renew your skin", "reviews_eyebrow": "What people say about us", "reviews_title": "A reference in the Salamanca neighborhood", "rev1": "\"The treatment ran a few extra minutes because Francis doesn't leave a single impurity untreated.\"", "rev2": "I've tried several places in the area and this was, without a doubt, the best: flawless treatment and an at-home routine explained step by step.", "rev3": "Professional and very attentive, pleasant atmosphere, and results you notice from the first session.", "review_source": "See all reviews on <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Where we are", "loc_h": "In the heart of the Salamanca neighborhood", "loc_p": "Calle del General Díaz Porlier 50, just <b class=\"hl\">2 minutes' walk from Metro Lista</b>. A welcoming, easy-to-find space, designed so your visit starts to relax you the moment you walk in.", "contact_eyebrow": "Contact", "contact_title": "Book your facial treatment", "c_dir": "Address", "c_wa": "WhatsApp", "c_email": "Email", "c_insta": "Instagram", "c_horario": "Hours", "c_horario_val": "Mon–Fri 10:00–20:00 · Sat 10:00–16:00 · Sun closed", "foot_terminos": "Terms and conditions", "foot_privacidad": "Privacy policy", "f1_name": "Dermapen (Microneedling) + Deep Cleansing", "f4_name": "Hydrafacial + Dermapen (Microneedling)", "ind_gallery_btn": "View gallery", "ind_tab_fotos": "Photos", "ind_tab_videos": "Videos", "ex_hp_name": "Hollywood Peel <span class=\"dur\">45 min</span>", "ex_hp_desc": "The individual Hollywood Peel, without a combined facial cleansing: a carbon peel that rejuvenates skin, minimizes pores and gives an instant flash effect.", "ex_hf_name": "Hydrafacial <span class=\"dur\">45 min</span>", "ex_hf_desc": "The individual Hydrafacial, without a combined extraction: cleansing, exfoliation and hydration with professional technology in its quickest format.", "ex_dp_name": "Dermapen (Microneedling) <span class=\"dur\">1 h</span>", "ex_dp_desc": "The individual Dermapen, without combined cleansing: precision microneedling that stimulates collagen, ideal for uneven texture, pores and acne marks.", "ex_dpexo_name": "Dermapen with Exosomes (Microneedling) <span class=\"dur\">1 h</span>", "ex_dpexo_price": "Ask for pricing", "ex_dpexo_desc": "Advanced biostimulation: microneedling combined with exosomes for deeper cell regeneration, firmness and radiance.", "gallery_empty_photos": "Photos coming soon.", "gallery_empty_videos": "Videos coming soon."}, "fr": {"nav_inicio": "Accueil", "nav_oferta": "Offre de juillet", "nav_servicios": "Services", "nav_nosotros": "À propos", "nav_opiniones": "Avis", "nav_contacto": "Contact", "nav_cta": "Réserver · WhatsApp", "hero_badge": "★★★★★ 5,0 sur Treatwell (108) et Google (64)", "hero_title": "Qu'attendez-vous pour<br/>découvrir votre <em>meilleure version ?</em>", "hero_lead": "<strong class=\"hl\">Référence en soins du visage</strong> dans le quartier de Salamanque, Madrid. Hydrafacial, Dermapen (Microneedling), Hollywood Peel et CC Glow, avec des résultats visibles dès la première séance.", "hero_btn_wa": "Réserver par WhatsApp", "hero_btn_ver": "Voir les soins", "stat_media": "Note moyenne", "stat_tw": "Avis sur Treatwell", "stat_gg": "Avis sur Google", "stat_leader": "Référence en soins du visage dans le quartier de Salamanque", "stat_metro": "Métro Lista, à 2 min à pied", "offer_badge": "Offre de juillet", "offer_title": "Le soin des stars d'Hollywood, avec 30 € offerts", "offer_desc": "Hollywood Peel + Nettoyage facial profond : le rituel choisi par les célébrités avant le tapis rouge, désormais chez FAOR. Uniquement en juillet.", "offer_save": "Économisez 30 €", "offer_li1": "Nettoyage facial profond au préalable, pour préparer la peau", "offer_li2": "Lotion au charbon actif qui se lie aux impuretés", "offer_li3": "Effet flash immédiat, sans douleur ni convalescence", "offer_li4": "1 h 20 · résultat visible dès la sortie", "offer_btn": "Réserver l'offre de juillet", "offer_note": "Valable jusqu'au 31 juillet. Sous réserve de disponibilité.", "offer_card_h": "Pourquoi \"le soin des stars\" ?", "offer_card_p": "On l'appelle ainsi car c'est le rituel que de nombreuses célébrités réservent avant les grands événements : il ne fait pas mal, ne laisse pas la peau rouge, ne nécessite aucune convalescence, et le résultat se voit immédiatement. Nous appliquons une lotion au charbon actif qui pénètre les pores et se lie aux impuretés, à l'excès de sébum et aux cellules mortes ; en la retirant, elle emporte tout cela avec elle tout en stimulant le collagène et en affinant les pores. La peau est plus lumineuse, plus uniforme, avec cet effet \"sortie de cabine\" — parfait avant un mariage, un événement, ou simplement pour aborder l'été avec une peau au meilleur de sa forme.", "services_eyebrow": "Soins du visage à Madrid", "services_title": "Tous nos services", "services_desc": "Protocoles combinés — les plus réservés — et soins individuels, chacun pensé pour un objectif précis de votre peau.", "f1_tag": "Le plus réservé", "f1_desc": "Microneedling de précision qui stimule le collagène. Idéal pour la texture irrégulière, les pores et les marques d'acné.", "save_tw": "−15% en réservant sur Treatwell", "btn_reservar": "Réserver", "f2_tag": "Éclat immédiat", "f2_desc": "Nettoyage, exfoliation et hydratation intense en une seule séance. Peau lumineuse dès le premier soin.", "f3_tag": "Effet flash", "f3_desc": "Le peeling préféré des célébrités : rajeunit, unifie le teint et procure un effet flash immédiat.", "save_julio": "115 € en juillet", "f4_tag": "Notre soin signature", "f4_desc": "Allie le meilleur de la technologie non invasive à la biostimulation intensive pour une régénération profonde.", "extras_title": "Soins individuels", "ex1_name": "Nettoyage facial profond <span class=\"dur\">1 h</span>", "ex2_name": "CC Glow <span class=\"dur\">1 h 15</span>", "ex3_name": "Flash Eye <span class=\"dur\">30 min</span>", "ex4_name": "Hydratation des lèvres <span class=\"dur\">30 min</span>", "ex5_name": "Microdermabrasion <span class=\"dur\">45 min</span>", "process_eyebrow": "Comment nous travaillons", "process_title": "Votre rituel en 4 étapes", "p1_h": "Diagnostic", "p1_p": "Nous analysons votre peau et votre objectif pour concevoir le protocole exact dont vous avez besoin.", "p2_h": "Préparation", "p2_p": "Nettoyage et hygiène en profondeur avant tout soin du visage.", "p3_h": "Soin", "p3_p": "Nous appliquons la technique choisie avec précision et des produits professionnels.", "p4_h": "Clôture et routine à la maison", "p4_p": "Hydratation, protection solaire et une routine personnalisée selon votre type de peau, pour continuer à voir des progrès après le rendez-vous.", "founder_eyebrow": "Qui est derrière FAOR", "founder_title": "Un espace de bien-être, de beauté et de renouveau", "founder_p1": "Un espace de bien-être, de beauté et de renouveau en plein cœur de Madrid. Notre équipe combine des techniques esthétiques avancées à une approche personnalisée pour sublimer votre peau, votre corps et votre confiance, dans un cadre privé, pensé pour vous.", "founder_p2": "Chez FAOR Beauty Skin, nous croyons que la beauté, c'est le bien-être. <b class=\"hl\">Francismar Oria</b>, notre fondatrice, a lancé ce projet avec la vision de créer une cabine où le soin esthétique serait plus qu'un traitement : une expérience transformatrice.", "founder_p3": "Aujourd'hui, FAOR est une équipe en pleine croissance qui partage la même passion du détail, de l'excellence et de la proximité. Nous sommes animés par le désir d'offrir un service professionnel et exclusif, toujours chaleureux et accessible.", "founder_p4": "Nous voulons que chaque visite soit un moment rien que pour vous : une pause dans la routine et un investissement dans votre bien-être.", "founder_b1": "Note sur Treatwell", "cabina_eyebrow": "Notre cabine", "cabina_h": "Un espace privé, pensé pour vous", "cabina_p": "Chaque séance se déroule dans un espace intime, soigné dans les moindres détails, pensé pour vous déconnecter dès la première minute. Technologie professionnelle, ambiance chaleureuse et toute l'attention portée sur votre peau.", "gallery_eyebrow": "Galerie", "gallery_title": "Des soins qui renouvellent votre peau", "reviews_eyebrow": "Ce que l'on dit de nous", "reviews_title": "Une référence dans le quartier de Salamanque", "rev1": "\"Le soin a duré quelques minutes de plus car Francis ne laisse passer aucune impureté.\"", "rev2": "J'ai essayé plusieurs centres du quartier et celui-ci a été, sans aucun doute, le meilleur : soin impeccable et routine à la maison expliquée étape par étape.", "rev3": "Professionnelle et très attentionnée, ambiance agréable et un résultat visible dès la première séance.", "review_source": "Voir tous les avis sur <a href=\"http://google.com/maps/place//data=!4m2!3m1!1s0xd42293b8270cb59:0x68ee8ccf36972dea\" rel=\"noopener\" target=\"_blank\">Google</a>", "loc_eyebrow": "Où nous trouver", "loc_h": "Au cœur du quartier de Salamanque", "loc_p": "Calle del General Díaz Porlier 50, à seulement <b class=\"hl\">2 minutes à pied du métro Lista</b>. Un espace accueillant et facile à trouver, pensé pour que votre rendez-vous commence à vous détendre dès votre arrivée.", "contact_eyebrow": "Contact", "contact_title": "Réservez votre soin du visage", "c_dir": "Adresse", "c_wa": "WhatsApp", "c_email": "E-mail", "c_insta": "Instagram", "c_horario": "Horaires", "c_horario_val": "Lun–Ven 10h00–20h00 · Sam 10h00–16h00 · Dim fermé", "foot_terminos": "Conditions générales", "foot_privacidad": "Politique de confidentialité", "f1_name": "Dermapen (Microneedling) + Nettoyage profond", "f4_name": "Hydrafacial + Dermapen (Microneedling)", "ind_gallery_btn": "Voir la galerie", "ind_tab_fotos": "Photos", "ind_tab_videos": "Vidéos", "ex_hp_name": "Hollywood Peel <span class=\"dur\">45 min</span>", "ex_hp_desc": "La version individuelle du Hollywood Peel, sans nettoyage facial combiné : un peeling au charbon qui rajeunit la peau, affine les pores et procure un effet flash immédiat.", "ex_hf_name": "Hydrafacial <span class=\"dur\">45 min</span>", "ex_hf_desc": "La version individuelle de l'Hydrafacial, sans extraction combinée : nettoyage, exfoliation et hydratation avec une technologie professionnelle, dans sa version la plus rapide.", "ex_dp_name": "Dermapen (Microneedling) <span class=\"dur\">1 h</span>", "ex_dp_desc": "La version individuelle du Dermapen, sans nettoyage combiné : microneedling de précision qui stimule le collagène, idéal pour la texture irrégulière, les pores et les marques d'acné.", "ex_dpexo_name": "Dermapen aux Exosomes (Microneedling) <span class=\"dur\">1 h</span>", "ex_dpexo_price": "Prix sur demande", "ex_dpexo_desc": "Biostimulation avancée : microneedling associé à des exosomes pour une régénération cellulaire plus profonde, plus de fermeté et d'éclat.", "gallery_empty_photos": "Photos bientôt disponibles.", "gallery_empty_videos": "Vidéos bientôt disponibles."}};
+  let CURRENT_LANG = 'es';
   function applyLang(lang) {
+    CURRENT_LANG = lang;
     const dict = I18N[lang] || I18N.es;
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       const key = el.getAttribute('data-i18n');
@@ -814,6 +961,9 @@
     });
     document.documentElement.setAttribute('lang', lang);
     try { localStorage.setItem('faorLang', lang); } catch (e) {}
+    if (typeof renderGalleryTab === 'function' && currentGalleryKey) {
+      renderGalleryTab();
+    }
   }
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -825,6 +975,86 @@
     try { saved = localStorage.getItem('faorLang') || 'es'; } catch (e) {}
     if (saved !== 'es') applyLang(saved);
   })();
+</script>
+
+<script>
+  const GALLERY_DATA = {
+    limpieza:      { titleKey: 'ex1_name', photos: [], videos: [] },
+    hollywood:     { titleKey: 'ex_hp_name', photos: ['https://static.wixstatic.com/media/dfdf73_6d734cdbecfd45d6ad34089023597ba4~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_6d734cdbecfd45d6ad34089023597ba4~mv2.jpg'], videos: [] },
+    hydrafacial:   { titleKey: 'ex_hf_name', photos: ['https://static.wixstatic.com/media/dfdf73_f2236f66500347eba8272d2e8d2e4a01~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_f2236f66500347eba8272d2e8d2e4a01~mv2.jpg'], videos: [] },
+    dermapen:      { titleKey: 'ex_dp_name', photos: ['https://static.wixstatic.com/media/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg/v1/fit/w_480,h_480,q_90,enc_avif,quality_auto/dfdf73_a1a63674bfdc4e95a83a57f03e3cd0b2~mv2.jpg'], videos: [] },
+    dermapen_exo:  { titleKey: 'ex_dpexo_name', photos: [], videos: [] },
+    microdermo:    { titleKey: 'ex5_name', photos: [], videos: [] },
+    labios:        { titleKey: 'ex4_name', photos: [], videos: [] },
+    flasheye:      { titleKey: 'ex3_name', photos: [], videos: [] },
+    ccglow:        { titleKey: 'ex2_name', photos: [], videos: [] }
+  };
+
+  let currentGalleryKey = null;
+  let currentGalleryTab = 'fotos';
+  const galleryModal = document.getElementById('galleryModal');
+  const galleryTitle = document.getElementById('galleryTitle');
+  const galleryContent = document.getElementById('galleryContent');
+
+  function stripTags(str) { const d = document.createElement('div'); d.innerHTML = str; return d.textContent; }
+
+  function renderGalleryTab() {
+    if (!currentGalleryKey) return;
+    const item = GALLERY_DATA[currentGalleryKey];
+    const dict = I18N[CURRENT_LANG] || I18N.es;
+    galleryTitle.textContent = stripTags(dict[item.titleKey] || '');
+    const list = currentGalleryTab === 'fotos' ? item.photos : item.videos;
+    galleryContent.innerHTML = '';
+    if (!list || list.length === 0) {
+      const p = document.createElement('p');
+      p.className = 'gallery-empty';
+      p.textContent = currentGalleryTab === 'fotos' ? dict.gallery_empty_photos : dict.gallery_empty_videos;
+      galleryContent.appendChild(p);
+      return;
+    }
+    list.forEach(function(src) {
+      if (currentGalleryTab === 'fotos') {
+        const img = document.createElement('img');
+        img.src = src; img.loading = 'lazy';
+        galleryContent.appendChild(img);
+      } else {
+        const vid = document.createElement('video');
+        vid.src = src; vid.controls = true; vid.muted = true; vid.playsInline = true;
+        galleryContent.appendChild(vid);
+      }
+    });
+  }
+
+  function openGallery(key) {
+    currentGalleryKey = key;
+    currentGalleryTab = 'fotos';
+    document.querySelectorAll('.gallery-tab').forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-tab') === 'fotos');
+    });
+    renderGalleryTab();
+    galleryModal.classList.add('open');
+    galleryModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeGallery() {
+    galleryModal.classList.remove('open');
+    galleryModal.setAttribute('aria-hidden', 'true');
+    currentGalleryKey = null;
+  }
+
+  document.querySelectorAll('.gallery-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { openGallery(btn.getAttribute('data-gallery')); });
+  });
+  document.getElementById('galleryClose').addEventListener('click', closeGallery);
+  galleryModal.addEventListener('click', function(e) { if (e.target === galleryModal) closeGallery(); });
+  document.querySelectorAll('.gallery-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      currentGalleryTab = tab.getAttribute('data-tab');
+      document.querySelectorAll('.gallery-tab').forEach(function(t) { t.classList.toggle('active', t === tab); });
+      renderGalleryTab();
+    });
+  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeGallery(); });
 </script>
 </body>
 </html>
