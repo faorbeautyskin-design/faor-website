@@ -116,8 +116,8 @@
   .btn-outline{color:var(--dark);}
   .btn-outline:hover{background:var(--dark);color:#fff;}
 
-  .hero-photo{position:relative;height:100%;min-height:420px;}
-  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+  .hero-photo{position:relative;height:100%;min-height:420px;background:#5b3b2c;}
+  .hero-photo img{width:100%;height:100%;object-fit:contain;object-position:center;}
   @media(min-width:960px){.hero-photo{height:640px;}}
   .hero-photo-tag{position:absolute;bottom:26px;left:26px;background:rgba(255,254,252,0.94);padding:13px 20px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--dark);}
 
@@ -319,6 +319,12 @@
   .category-row .cr-name{flex-grow:1;font-family:var(--serif);font-size:15.5px;line-height:1.3;}
   .category-row .cr-name .dur{display:block;font-size:10.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.04em;font-family:var(--sans);margin-top:2px;}
   .category-row .cr-price{font-family:var(--serif);font-style:italic;font-size:16px;white-space:nowrap;}
+
+  .promo-row{flex-wrap:wrap;background:linear-gradient(90deg,rgba(133,117,61,.08),rgba(133,117,61,.02));border-radius:8px;padding:12px 12px;margin:2px 0;border-bottom:1px solid var(--line);}
+  .promo-tag{display:inline-flex;align-items:center;background:var(--rose-deep);color:#fff;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap;animation:promoPulse 1.8s ease-in-out infinite;}
+  @keyframes promoPulse{0%,100%{box-shadow:0 0 0 0 rgba(133,117,61,.5);}50%{box-shadow:0 0 0 6px rgba(133,117,61,0);}}
+  .promo-row .cr-price-old{font-family:var(--sans);font-size:12.5px;color:var(--grey);text-decoration:line-through;margin-right:6px;}
+  .promo-row .cr-price-new{font-family:var(--serif);font-style:italic;font-weight:700;font-size:17.5px;color:var(--rose-deep);}
   .category-body details{margin:2px 0 4px;}
   .category-body summary{font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--rose-deep);cursor:pointer;list-style:none;}
   .category-body summary::-webkit-details-marker{display:none;}
@@ -617,10 +623,11 @@
           <img src="https://static.wixstatic.com/media/dfdf73_c0946b166f2d424da90ae8f6e9ee0e85f003.jpg/v1/fit/w_248,h_440,q_90,enc_avif,quality_auto/dfdf73_c0946b166f2d424da90ae8f6e9ee0e85f003.jpg" alt="Tratamientos faciales FAOR Beauty Skin" loading="lazy">
           <div class="category-body">
             <h3 data-i18n="cat_basicos">Tratamientos Faciales FAOR Beauty Skin</h3>
-            <div class="category-row">
+            <div class="category-row promo-row">
               <span class="cr-name" data-i18n="ex1_name">Limpieza facial profunda <span class="dur">1 h</span></span>
-              <span class="cr-price">75 €</span>
-              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Limpieza%20facial%20profunda%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
+              <span class="promo-tag">🔥 Promo 3–8 agosto</span>
+              <span class="cr-price"><span class="cr-price-old">75 €</span><span class="cr-price-new">63,75 €</span></span>
+              <a href="https://wa.me/34603491978?text=%C2%A1Hola!%20Estoy%20interesado%2Fa%20en%20obtener%20informaci%C3%B3n.%0A%0ATratamiento%3A%20Limpieza%20facial%20profunda%20(promo%20-15%25)%0ANombre%3A%20" class="mini-wa" target="_blank" rel="noopener" data-i18n="btn_reservar">Reservar</a>
             </div>
             <details>
               <summary>Leer más</summary>
