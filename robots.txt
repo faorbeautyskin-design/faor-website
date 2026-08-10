@@ -1,4 +1,33 @@
 User-agent: *
 Allow: /
 
+# --- IA generativa: citas en tiempo real (permitir) ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# --- IA generativa: entrenamiento de modelo base (bloquear) ---
+# Evita que el contenido de FAOR se use para entrenar el modelo base.
+# No afecta a si apareces citado en ChatGPT/Perplexity/Claude — eso lo permiten los bots de arriba.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
 Sitemap: https://www.faorbeautyskin.com/sitemap.xml
+
