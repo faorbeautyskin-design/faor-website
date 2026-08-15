@@ -2270,27 +2270,27 @@
       </div>
       <div class="video-grid">
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-1.mp4" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-1-poster.jpeg" muted loop autoplay playsinline preload="auto" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-1-poster.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-1.mp4" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption" data-i18n="vid_caption_generic">Tratamiento facial</span>
         </div>
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/hydrafacial-tratamiento-facial-madrid.mp4" poster="/images/hydrafacial-tratamiento-facial-madrid-poster.jpeg" muted loop autoplay playsinline preload="auto" title="Hydrafacial en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/hydrafacial-tratamiento-facial-madrid-poster.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/hydrafacial-tratamiento-facial-madrid.mp4" title="Hydrafacial en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption">Hydrafacial</span>
         </div>
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/dermapen-microneedling-facial-madrid.mp4" poster="/images/dermapen-microneedling-facial-madrid-poster.jpeg" muted loop autoplay playsinline preload="auto" title="Dermapen microneedling en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/dermapen-microneedling-facial-madrid-poster.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/dermapen-microneedling-facial-madrid.mp4" title="Dermapen microneedling en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption">Dermapen</span>
         </div>
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-3.mp4" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-3-poster.jpeg" muted loop autoplay playsinline preload="auto" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-3-poster.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-3.mp4" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption" data-i18n="vid_caption_generic">Tratamiento facial</span>
         </div>
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-4.mp4" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-4-poster.jpeg" muted loop autoplay playsinline preload="auto" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/tratamiento-facial-faor-beauty-skin-madrid-4-poster.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/tratamiento-facial-faor-beauty-skin-madrid-4.mp4" title="Tratamiento facial en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption" data-i18n="vid_caption_generic">Tratamiento facial</span>
         </div>
         <div class="video-card">
-          <video muted loop playsinline preload="auto" autoplay src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/hollywood-peel-carbon-facial-madrid.mp4" poster="/images/hollywood-peel-carbon-facial-madrid-poster-2.jpeg" muted loop autoplay playsinline preload="auto" title="Hollywood Peel en FAOR Beauty Skin Madrid"></video>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="/images/hollywood-peel-carbon-facial-madrid-poster-2.jpeg" data-src="https://cdn.jsdelivr.net/gh/faorbeautyskin-design/faor-website@main/videos/hollywood-peel-carbon-facial-madrid.mp4" title="Hollywood Peel en FAOR Beauty Skin Madrid"></video>
           <span class="video-caption">Hollywood Peel</span>
         </div>
       </div>
@@ -2343,7 +2343,7 @@
 
   <section>
     <div class="wrap location">
-      <img src="/images/ubicacion-mapa.png" width="1081" height="298" alt="Mapa de ubicación de FAOR Beauty Skin, Calle del General Díaz Porlier 50, Madrid" loading="lazy">
+      <img src="/images/ubicacion-mapa.jpg" width="1081" height="298" alt="Mapa de ubicación de FAOR Beauty Skin, Calle del General Díaz Porlier 50, Madrid" loading="lazy">
       <div class="location-copy">
         <span class="eyebrow" data-i18n="loc_eyebrow">Dónde estamos</span>
         <h3 data-i18n="loc_h">En el corazón del Barrio de Salamanca</h3>
@@ -2526,13 +2526,38 @@
 </script>
 
 <script>
-  document.querySelectorAll('.video-card video').forEach(function(v) {
-    v.muted = true;
-    var playPromise = v.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(function() { /* autoplay blocked; poster image remains visible */ });
-    }
-  });
+  // Carga diferida: los videos de la galeria solo se descargan cuando
+  // el usuario realmente se acerca a esa seccion de la pagina.
+  if ('IntersectionObserver' in window) {
+    var lazyVideoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          if (!v.src && v.dataset.src) {
+            v.src = v.dataset.src;
+            v.load();
+          }
+          var playPromise = v.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function() { /* autoplay blocked; poster image remains visible */ });
+          }
+        } else {
+          v.pause();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    document.querySelectorAll('.video-card video.lazy-video').forEach(function(v) {
+      lazyVideoObserver.observe(v);
+    });
+  } else {
+    // Fallback para navegadores muy antiguos: cargar todo de una vez.
+    document.querySelectorAll('.video-card video.lazy-video').forEach(function(v) {
+      if (v.dataset.src) { v.src = v.dataset.src; }
+      v.muted = true;
+      var playPromise = v.play();
+      if (playPromise !== undefined) { playPromise.catch(function() {}); }
+    });
+  }
 </script>
 
 <script>
