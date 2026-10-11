@@ -2592,7 +2592,7 @@
       </div>
       <div class="review-tabs">
         <span class="review-tab">★★★★★ <b>Treatwell</b> · 5,0 (108)</span>
-        <span class="review-tab">★★★★★ <b>Google</b> · 5,0 (91)</span>
+        <span class="review-tab">★★★★★ <b>Google</b> · 5,0 (115)</span>
       </div>
       <div class="platform-badges">
         <div class="platform-badge">
@@ -2917,63 +2917,6 @@
   }
 </script>
 
-<script>
-  // FAOR · Origen de la visita en WhatsApp.
-  // Detecta por dónde llegó el visitante y añade un emoji discreto al mensaje
-  // de TODOS los botones de WhatsApp, justo después de "¡Hola!".
-  // ✨ ChatGPT Ads · 🤍 IA gratis · 🌸 Google Ads · 🌷 Google orgánico
-  // 📍 Google Maps · 💫 Instagram/Facebook · 🌿 Treatwell · 🌙 Prensa · (nada) directo
-  (function () {
-    function detect() {
-      var p = new URLSearchParams(location.search);
-      var s = (p.get('utm_source') || '').toLowerCase();
-      var m = (p.get('utm_medium') || '').toLowerCase();
-      if (s) {
-        if (s === 'chatgpt' && (m === 'cpc' || m === 'paid')) return 'chatgpt_ads';
-        if (/chatgpt|openai|perplexity|claude|gemini|copilot/.test(s)) return 'ia';
-        if (s === 'google' && m === 'cpc') return 'google_ads';
-        if (s === 'gmaps') return 'maps';
-        if (/instagram|facebook|meta|^ig$|^fb$/.test(s)) return 'instagram';
-        if (s === 'treatwell') return 'treatwell';
-        if (s === 'prensa') return 'prensa';
-        return '';
-      }
-      if (p.get('gclid') || p.get('gbraid') || p.get('wbraid')) return 'google_ads';
-      if (p.get('fbclid')) return 'instagram';
-      var r = document.referrer || '';
-      if (/chatgpt\.com|chat\.openai|perplexity|claude\.ai|gemini\.google|copilot/.test(r)) return 'ia';
-      if (/google\./.test(r)) return 'google_seo';
-      if (/instagram|facebook/.test(r)) return 'instagram';
-      if (/treatwell/.test(r)) return 'treatwell';
-      return '';
-    }
-
-    var src = detect();
-    try {
-      if (src) sessionStorage.setItem('faor_src', src);
-      else src = sessionStorage.getItem('faor_src') || '';
-    } catch (e) {}
-
-    var mark = {
-      chatgpt_ads: '✨', ia: '🤍', google_ads: '🌸', google_seo: '🌷',
-      maps: '📍', instagram: '💫', treatwell: '🌿', prensa: '🌙'
-    }[src];
-    if (!mark) return;
-
-    document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com"]').forEach(function (a) {
-      try {
-        var u = new URL(a.href);
-        var txt = u.searchParams.get('text') || '¡Hola! Quiero reservar una cita.';
-        var i = txt.indexOf('\n');
-        txt = i > -1 ? txt.slice(0, i) + ' ' + mark + txt.slice(i) : txt + ' ' + mark;
-        // encodeURIComponent: los espacios van como %20 (WhatsApp no siempre entiende "+")
-        var enc = encodeURIComponent(txt);
-        a.href = /[?&]text=/.test(a.href)
-          ? a.href.replace(/([?&]text=)[^&#]*/, '$1' + enc)
-          : a.href + (a.href.indexOf('?') > -1 ? '&' : '?') + 'text=' + enc;
-      } catch (e) {}
-    });
-  })();
-</script>
+<script src="/faor-tracking.js" defer></script>
 </body>
 </html>
