@@ -5,7 +5,7 @@
  * 1) ORIGEN EN WHATSAPP: añade un emoji discreto a la primera línea del
  *    mensaje de todos los botones de WhatsApp según por dónde llegó la visita.
  *    ✨ ChatGPT Ads · 💜 ChatGPT gratis · 🧡 Claude · 💙 Gemini · 💚 Perplexity
- *    💛 otra IA o IA sin identificar (Copilot/Bing, enlaces del llms.txt…) · 🌸 Google Ads · 🌷 Google orgánico
+ *    💛 otra IA o IA sin identificar (Copilot/Bing, enlaces del llms.txt…) · 🔎 Google Ads (igual que el botón de WhatsApp del anuncio) · 🌷 Google orgánico
  *    📍 Google Maps · 💫 Instagram/Facebook · 🌿 Treatwell · 🌙 Prensa
  *    (sin emoji) directo / boca a boca
  *    Solo usa sessionStorage (se borra al cerrar la pestaña). No es una cookie.
@@ -23,7 +23,7 @@
 
   var MARKS = {
     chatgpt_ads: '✨', ia_chatgpt: '💜', ia_claude: '🧡', ia_gemini: '💙',
-    ia_perplexity: '💚', ia_otra: '💛', google_ads: '🌸', google_seo: '🌷',
+    ia_perplexity: '💚', ia_otra: '💛', google_ads: '🔎', google_seo: '🌷',
     maps: '📍', instagram: '💫', treatwell: '🌿', prensa: '🌙'
   };
 
