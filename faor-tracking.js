@@ -13,13 +13,22 @@
  * 2) PÍXEL DE CHATGPT ADS: solo se carga si la visita viene de un anuncio
  *    de ChatGPT Y la persona acepta las cookies de medición. Mide el clic
  *    en cualquier botón de WhatsApp como "lead_created".
+ *
+ * 3) ETIQUETA DE GOOGLE (Google Ads + Analytics): solo se carga si la persona
+ *    acepta las cookies de medición. El aviso se muestra a quien llega desde
+ *    un anuncio de Google o de ChatGPT. Cada clic en WhatsApp se envía como
+ *    conversión "Clic WhatsApp" (75 €) a Google Ads y como evento a Analytics.
  */
 (function () {
   'use strict';
 
   var OPENAI_PIXEL_ID = 'LcppDDuC4F4Dg4vrKwghiP';
+  var GOOGLE_TAG_ID = 'G-KE4LCW10NF';
+  // Conversión "Clic WhatsApp" de Google Ads: 'AW-XXXXXXXXX/etiqueta' (vacío = aún sin configurar)
+  var GOOGLE_ADS_SEND_TO = '';
+  var WA_VALUE = 75;
   // Orígenes que necesitan píxel publicitario (y por tanto aviso de cookies)
-  var PAID_SOURCES = { chatgpt_ads: true };
+  var PAID_SOURCES = { chatgpt_ads: true, google_ads: true };
 
   var MARKS = {
     chatgpt_ads: '✨', ia_chatgpt: '💜', ia_claude: '🧡', ia_gemini: '💙',
@@ -107,11 +116,43 @@
     window.oaiq('init', { pixelId: OPENAI_PIXEL_ID, debug: false });
   }
 
-  // Clic en cualquier botón de WhatsApp = conversión (solo si el píxel está activo)
+  var googleOn = false;
+  function loadGoogle() {
+    if (googleOn || !GOOGLE_TAG_ID) return;
+    googleOn = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      ad_storage: 'granted', ad_user_data: 'granted',
+      ad_personalization: 'denied', analytics_storage: 'granted'
+    });
+    var j = document.createElement('script');
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtag/js?id=' + GOOGLE_TAG_ID;
+    document.head.appendChild(j);
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_TAG_ID);
+    if (GOOGLE_ADS_SEND_TO) window.gtag('config', GOOGLE_ADS_SEND_TO.split('/')[0]);
+  }
+
+  function loadMeasurement() { loadPixel(); loadGoogle(); }
+
+  // Clic en cualquier botón de WhatsApp = conversión (solo con consentimiento)
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]') : null;
-    if (a && pixelOn && window.oaiq) {
+    if (!a) return;
+    if (pixelOn && window.oaiq) {
       try { window.oaiq('measure', 'lead_created', { type: 'customer_action' }); } catch (err) {}
+    }
+    if (googleOn && window.gtag) {
+      try {
+        window.gtag('event', 'whatsapp_click', { source: src || 'directo', transport_type: 'beacon' });
+        if (GOOGLE_ADS_SEND_TO) {
+          window.gtag('event', 'conversion', {
+            send_to: GOOGLE_ADS_SEND_TO, value: WA_VALUE, currency: 'EUR', transport_type: 'beacon'
+          });
+        }
+      } catch (err) {}
     }
   }, true);
 
@@ -142,7 +183,7 @@
     box.setAttribute('aria-live', 'polite');
     box.innerHTML = '<p>' + t.msg + ' <a href="/privacidad.html">' + t.more + '</a></p>' +
       '<div class="b"><button type="button" class="no">' + t.no + '</button><button type="button" class="ok">' + t.ok + '</button></div>';
-    box.querySelector('.ok').onclick = function () { setConsent('yes'); box.remove(); loadPixel(); };
+    box.querySelector('.ok').onclick = function () { setConsent('yes'); box.remove(); loadMeasurement(); };
     box.querySelector('.no').onclick = function () { setConsent('no'); box.remove(); };
     document.body.appendChild(box);
   }
@@ -159,7 +200,7 @@
   function init() {
     markLinks();
     var c = getConsent();
-    if (c === 'yes') loadPixel();
+    if (c === 'yes') loadMeasurement();
     else if (c !== 'no' && PAID_SOURCES[src]) showBanner();
   }
 
