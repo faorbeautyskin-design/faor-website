@@ -25,7 +25,7 @@
   var OPENAI_PIXEL_ID = 'LcppDDuC4F4Dg4vrKwghiP';
   var GOOGLE_TAG_ID = 'G-KE4LCW10NF';
   // Conversión "Clic WhatsApp" de Google Ads: 'AW-XXXXXXXXX/etiqueta' (vacío = aún sin configurar)
-  var GOOGLE_ADS_SEND_TO = '';
+  var GOOGLE_ADS_SEND_TO = 'AW-17408108949/T-9yCKrpi5wdEJXT6uxA';
   var WA_VALUE = 75;
   // Orígenes que necesitan píxel publicitario (y por tanto aviso de cookies)
   var PAID_SOURCES = { chatgpt_ads: true, google_ads: true };
